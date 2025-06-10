@@ -1,0 +1,35 @@
+version: "3.8"  # Can be removed (optional in newer Docker)
+
+services:
+  bomba-db:
+    image: mysql:8.0
+    container_name: bomba-db
+    environment:
+      MYSQL_ROOT_PASSWORD: "@1I9o9p71997"
+      MYSQL_DATABASE: bombaagua
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./sql/init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping"]
+      interval: 5s
+      timeout: 10s
+      retries: 5
+
+  bomba-app:
+    build: .
+    container_name: bomba-app
+    depends_on:
+      bomba-db:
+        condition: service_healthy
+    ports:
+      - "8080:8080"
+    environment:
+      DB_URL: "jdbc:mysql://bomba-db:3306/bombaagua?useSSL=false"
+      DB_USER: root
+      DB_PASSWORD: "@1I9o9p71997"
+
+volumes:
+  mysql_data:

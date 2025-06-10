@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.TextArea?>
+
+<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.bombaagua.controller.CanvasController">
+   <children>
+      <BorderPane style="-fx-background-color: lightgray;">
+         <top>
+            <VBox spacing="15" BorderPane.alignment="CENTER">
+                <padding>
+                    <Insets bottom="10" left="15" right="15" top="10" />
+                </padding>
+               <!-- First Row: Enable and Clear buttons side by side -->
+               <HBox alignment="CENTER_LEFT" spacing="5">
+                  <Button fx:id="switchClickDraw" mnemonicParsing="false"  onAction="#handleToggleClickDraw" text="Enable" />
+                  <!--<Button fx:id="buttonClickLogin" mnemonicParsing="false"  onAction="#handleToggleClickLogin" text="Login" />-->
+                  <Region HBox.hgrow="ALWAYS" /> <!-- Pushes Clear to the right -->
+                  <Button fx:id="buttonClickDrawClear" mnemonicParsing="false" onAction="#handleToggleClickDrawClear" text="Clear" />
+                  <Button fx:id="buttonClickSave" mnemonicParsing="false" onAction="#handleToggleClickSave" text="Save" />
+                  <Button fx:id="buttonClickLoad" mnemonicParsing="false" onAction="#handleToggleClickLoad" text="Load" />
+                  <Button fx:id="switchClickDelete" mnemonicParsing="false" onAction="#handleToggleClickDelete" text="Delete" />
+               </HBox>
+               <!-- Second Row: Hidden buttons (Mode & Snap) -->
+               <HBox fx:id="drawButtonsBox" spacing="5" visible="false" managed="false">
+                    <Button fx:id="switchClickDrawMode" mnemonicParsing="false" onAction="#handleToggleClickDrawMode" text="Default" />
+                    <Button fx:id="switchClickDrawSnap" mnemonicParsing="false" onAction="#handleToggleClickDrawSnap" text="Default" />
+                </HBox>
+                <HBox fx:id="deleteButtonsBox" spacing="5" visible="false" managed="false">
+                    <Button fx:id="buttonClickDeleteLast" mnemonicParsing="false" onAction="#handleToggleClickDeleteLast" text="Delete Last" />
+                    <Button fx:id="buttonClickDeleteAll" mnemonicParsing="false" onAction="#handleToggleClickDeleteAll" text="Delete All" />
+                </HBox>
+            </VBox>
+         </top>
+         <center>
+            <StackPane style="-fx-background-color: #e0e0e0;">
+                <Canvas fx:id="designCanvas" height="450.0" onMouseClicked="#handleCanvasClick" width="750.0" BorderPane.alignment="CENTER" />
+            </StackPane>
+         </center>
+      </BorderPane>
+   </children>
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
+</VBox>

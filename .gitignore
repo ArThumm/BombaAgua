@@ -1,0 +1,17 @@
+# NetBeans specific files
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+# MySQL connection files (if you store credentials separately)
+*.properties
+*.config
+
+# Compiled class files
+*.class
+
+# Log files
+*.log

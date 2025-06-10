@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" spacing="20.0" 
+      xmlns="http://javafx.com/javafx/13" 
+      xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="com.mycompany.bombaagua.controller.LoginController">
+    
+    <!-- Padding -->
+    <padding>
+        <Insets top="40.0" right="40.0" bottom="40.0" left="40.0"/>
+    </padding>
+
+    <!-- Title Section -->
+    <Label text="Login Portal">
+        <font>
+            <Font size="24.0"/>
+        </font>
+    </Label>
+
+    <!-- Form Section -->
+    <GridPane hgap="10" vgap="10" VBox.vgrow="NEVER">
+        <columnConstraints>
+            <ColumnConstraints hgrow="NEVER" minWidth="100.0"/>
+            <ColumnConstraints hgrow="ALWAYS"/>
+        </columnConstraints>
+        
+        <!-- Username Row -->
+        <rowConstraints>
+            <RowConstraints vgrow="NEVER"/>
+        </rowConstraints>
+        <Label text="Username:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+        <TextField fx:id="usernameField" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+        <!-- Password Row -->
+        <rowConstraints>
+            <RowConstraints vgrow="NEVER"/>
+        </rowConstraints>
+        <Label text="Password:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+        <PasswordField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+    </GridPane>
+
+    <!-- Button Section -->
+    <HBox spacing="10" alignment="CENTER">
+        <Button fx:id="loginButton" text="Login" onAction="#handleLogin" defaultButton="true">
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </Button>
+        <Button fx:id="buttonClickCreate" text="Create" onAction="#handleToggleClickCreate">
+            <font>
+                <Font size="14.0"/>
+            </font>
+        </Button>
+    </HBox>
+
+    <!-- Status Message Section -->
+    <Label fx:id="errorLabel" style="-fx-text-fill: red;" visible="false"/>
+</VBox>
